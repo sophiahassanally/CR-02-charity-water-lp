@@ -25,11 +25,11 @@ Fonts:
 
 /* Set up the main font and background color for the whole page */
 body {
-  background-color: #f4f8fb; /* Soft light blue for a fresh look */
+  background-color: #f7f7f7; /* Set page background to light gray */
   font-family: 'Avenir', 'Proxima Nova', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  color: #222;
+  color: #000; /* Set all body text to black */
 }
 
 /* Add a slight shadow and rounded corners to each section for depth */
@@ -41,11 +41,34 @@ section {
   padding: 24px 16px;
 }
 
+/* Top Bar Styles */
+.top-bar {
+  display: flex; /* Place logo and text side by side */
+  align-items: center; /* Vertically center items */
+  padding: 12px 18px;
+  background-color: #fff;
+}
+
+/* Make the logo image much smaller */
+.logo {
+  width: 38px; /* Set logo width to 38px */
+  height: auto; /* Keep aspect ratio */
+  margin-right: 12px; /* Space between logo and text */
+}
+
+/* Company name uses Lora font from Google Fonts */
+.company-name {
+  font-family: 'Lora', serif; /* Use Lora font from Google Fonts */
+  font-size: 1.5em;
+  font-weight: 100; /* Use thinnest font weight for much less thickness */
+  color: #000; /* Make company name black */
+}
+
 /* Hero Section Styles */
 .hero {
   position: relative; /* Needed for overlay */
   /* Set a background image that covers the whole section */
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
+  background-image: url('img/water.png'); /* Use local water.png image */
   background-size: cover;      /* Make the image cover the whole area */
   background-position: center; /* Center the image */
   background-repeat: no-repeat;
@@ -63,23 +86,27 @@ section {
 /* Make the headline bold and modern */
 .hero h1 {
   font-size: 2.5em;
-  font-weight: bold;
+  font-family: 'Nunito Sans', Arial, sans-serif; /* Use Nunito Sans for headline */
+  font-weight: 700; /* Bold headline */
   letter-spacing: 1px;
   margin-bottom: 15px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Soft shadow for readability */
+  color: #fff; /* Make headline text white for better visibility */
 }
 
 /* Style the subheadline */
 .hero p {
   font-size: 1.2em;
+  font-family: 'Open Sans', Arial, sans-serif; /* Use Open Sans for subheadline */
+  font-weight: 400; /* Regular weight for subheadline */
   margin-top: 0;
   text-shadow: 0 1px 4px rgba(0,0,0,0.12);
 }
 
 /* Story Section Styles */
 .story {
-  background-color: #8BD1CB; /* Secondary Light Blue */
-  color: #222;
+  background-color: #77a8bb; /* Lighter blue background */
+  color: #fff; /* Make story section text white */
   text-align: center;
   padding: 30px 20px;
 }
@@ -91,10 +118,21 @@ h2 {
   font-weight: bold;
 }
 
+/* Make section headings white for better contrast */
+.story h2,
+.call-to-action h2 {
+  color: #fff; /* White color for better contrast */
+}
+
+/* Set impact story heading to lighter blue */
+.impact-story h2 {
+  color: #77a8bb; /* Lighter blue color for impact story heading */
+}
+
 /* Call-to-Action Section Styles */
 .call-to-action {
-  background-color: #FFC907; /* Primary Yellow */
-  color: #222;
+  background-color: #77a8bb; /* Lighter blue background */
+  color: #fff; /* Make call-to-action text white */
   text-align: center;
   padding: 30px 20px;
 }
@@ -111,7 +149,7 @@ h2 {
 /* Donate Button Styles */
 .donate-button {
   display: inline-block;
-  background-color: #4FCB53; /* Green */
+  background-color: #003366; /* Navy color for donate button */
   color: #fff;
   padding: 14px 32px;
   text-decoration: none;
@@ -119,21 +157,27 @@ h2 {
   font-weight: bold;
   font-size: 1.1em;
   margin-top: 18px;
-  box-shadow: 0 2px 8px rgba(79, 203, 83, 0.10);
-  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 51, 102, 0.10);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s; /* Smooth transition for effects */
   border: none;
   cursor: pointer;
 }
 
 /* Change button color when hovered */
 .donate-button:hover {
-  background-color: #159A48; /* Dark Green */
-  transform: translateY(-2px) scale(1.04); /* Slight lift */
+  background-color: #002244; /* Slightly darker navy on hover */
+  transform: scale(1.07) translateY(-2px); /* Slightly bigger and lifted */
+  box-shadow: 0 6px 16px rgba(0, 51, 102, 0.18); /* Stronger shadow on hover */
 }
 
-/* Add some spacing between sections */
+/* Add a hover effect to sections for a card-like feel */
 section {
   margin-bottom: 20px;
+  transition: box-shadow 0.2s, transform 0.2s; /* Smooth transition for effects */
+}
+section:hover {
+  box-shadow: 0 6px 24px rgba(46, 157, 247, 0.15); /* Stronger shadow on hover */
+  transform: translateY(-4px) scale(1.01); /* Slight lift and scale */
 }
 
 /* 
@@ -144,27 +188,44 @@ section {
 
 /* This media query applies styles when the screen is 600px wide or less (like on most phones) */
 @media (max-width: 600px) {
+  /* Make top bar items stack and center on small screens */
+  .top-bar {
+    flex-direction: column; /* Stack logo and text vertically */
+    align-items: center;    /* Center items horizontally */
+    padding: 10px 6px;
+  }
+
+  .logo {
+    margin-right: 0; /* Remove space when stacked */
+    margin-bottom: 6px; /* Add space below logo */
+    width: 32px; /* Make logo a bit smaller on mobile */
+  }
+
+  .company-name {
+    font-size: 1.1em; /* Smaller company name text */
+  }
+
   /* Make hero section padding smaller on small screens */
   .hero {
-    padding: 32px 8px;
+    padding: 24px 8px; /* Less padding on mobile */
     font-size: 1em;
   }
 
   /* Make headline font size smaller so it fits on small screens */
   .hero h1 {
-    font-size: 1.4em;
+    font-size: 1.2em; /* Smaller headline */
   }
 
   /* Make subheadline font size smaller */
   .hero p {
-    font-size: 1em;
+    font-size: 1em; /* Smaller subheadline */
   }
 
   /* Make story and call-to-action sections have less padding */
   .story,
   .call-to-action,
   .donation-section {
-    padding: 14px 8px;
+    padding: 12px 6px; /* Less padding for sections */
   }
 
   /* Make impact story image smaller and stack above the text */
@@ -175,7 +236,7 @@ section {
 
   .impact-image {
     width: 90%;    /* Make image take up most of the width */
-    max-width: 220px;
+    max-width: 180px; /* Smaller image on mobile */
   }
 }
 
